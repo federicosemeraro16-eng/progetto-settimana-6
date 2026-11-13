@@ -35,7 +35,7 @@ header.scroll {
   background-color: hsl(20, 30%, 35%);
 }
 header .nav-link {
-  color: hsl(20, 30%, 35%);
+  color: #F8F9FA;
 }
 header .nav-link:hover {
   color: hsl(40, 30%, 90%);
