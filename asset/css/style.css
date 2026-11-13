@@ -3,12 +3,12 @@ header, footer {
   color: hsl(40, 30%, 90%);
 }
 
-.hero div a, #contatti button {
+.hero div a, #contatti button, .modal-content button {
   background-color: hsl(20, 30%, 35%);
   color: hsl(40, 30%, 90%);
   border: 1px solid hsl(20, 30%, 35%);
 }
-.hero div a:hover, #contatti button:hover, .hero div a:active, #contatti button:active, .hero div a:focus-visible, #contatti button:focus-visible {
+.hero div a:hover, #contatti button:hover, .modal-content button:hover, .hero div a:active, #contatti button:active, .modal-content button:active, .hero div a:focus-visible, #contatti button:focus-visible, .modal-content button:focus-visible {
   background-color: hsl(20, 30%, 27%);
   color: hsl(40, 30%, 90%);
   border-color: hsl(20, 30%, 27%);

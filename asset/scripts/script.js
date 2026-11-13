@@ -4,7 +4,7 @@ const HEADER = document.querySelector('header');
 const NAV_LINK = document.querySelectorAll('.nav-link');
 const NAV_BAR = document.querySelector('.navbar-nav');
 const CARD_CONTAINER = document.querySelector('#card-container');
-
+const WORK_MODAL_BODY = document.querySelector('#works-modal-body');
 
 const WORKS = [
   {
@@ -195,31 +195,51 @@ NAV_BAR.addEventListener('click', (e) => {
 // funzione per trovare i migliori tre prodotti per categoria
 
 function getTopWorks(array, category) {
-  const arrayFiltered = array.filter((item) => item.category === category );
+  const arrayFiltered = array.filter((item) => item.category === category);
   const arrayOrdered = arrayFiltered.sort((a, b) => a.rating - b.rating);
-  const topThreeArray = arrayOrdered.slice(0,3);
+  const topThreeArray = arrayOrdered.slice(0, 3);
   return topThreeArray
 }
 
 
-CARD_CONTAINER.addEventListener('click',(e)=>{
-  
+CARD_CONTAINER.addEventListener('click', (e) => {
+
   const CATEGORY = e.target.closest('.card').dataset.category;
   const CARD_CLICKED = e.target.closest('.card');
   const MODAL_TITLE_CATEGORY = CARD_CLICKED.querySelector('.card-title').textContent;
-  const MODAL_H2= document.querySelector('#works-modal-label');
+  const MODAL_H2 = document.querySelector('#works-modal-label');
   MODAL_H2.textContent = `I nostri 3 migliori lavori di ${MODAL_TITLE_CATEGORY}`;
-  const TOP_THREE_FOR_CATEGORY = getTopWorks(WORKS,`${CATEGORY}`);  
+  const TOP_THREE_FOR_CATEGORY = getTopWorks(WORKS, `${CATEGORY}`);
   console.log(TOP_THREE_FOR_CATEGORY);
-   
-  
+  renderBestThree(TOP_THREE_FOR_CATEGORY);
 })
-  
 
-function renderBestThree(array){
- 
-  
-  array.forEach((item)=>{
 
+function renderBestThree(array) {
+  array.forEach((item) => {
+    const NEW_ROW = document.createElement('div');
+    NEW_ROW.classList.add('align-items-center', 'mb-3');
+    const NEW_COL = document.createElement('div');
+    NEW_COL.classList.add('col-12');
+    const NEW_IMG = document.createElement('img');
+    NEW_IMG.classList.add('img-fluid', 'rounded');
+    NEW_IMG.setAttribute('src', item.img);
+    NEW_IMG.setAttribute('alt', item.description);
+    const COL_DIV_TEXT = document.createElement('div');
+    COL_DIV_TEXT.classList.add('col-12','text-center','p-2',);
+    const NEW_PAR = document.createElement('p');
+    NEW_PAR.classList.add('text-center')
+    NEW_PAR.textContent = `Lavoro effettuato: ${item.title}`;
+    const YEAR_FIELD = document.createElement('p');
+    YEAR_FIELD.textContent = `Lavoro effettuato nell'anno ${item.year}`;
+    const DESCRIPTION_FIELD = document.createElement('p');
+    DESCRIPTION_FIELD.textContent = `Dettaglio lavoro effettuato: ${item.description}`;
+    COL_DIV_TEXT.appendChild(DESCRIPTION_FIELD);
+    COL_DIV_TEXT.appendChild(YEAR_FIELD);
+    COL_DIV_TEXT.appendChild(NEW_PAR);
+    NEW_COL.appendChild(NEW_IMG);
+    NEW_ROW.appendChild(NEW_COL);
+    NEW_ROW.appendChild(COL_DIV_TEXT);
+    WORK_MODAL_BODY.appendChild(NEW_ROW);
   })
 }

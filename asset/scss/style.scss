@@ -79,3 +79,8 @@ footer{
     }
   }
 }
+
+
+.modal-content button{
+  @extend %btn-tool;
+}
