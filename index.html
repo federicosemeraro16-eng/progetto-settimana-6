@@ -51,10 +51,10 @@
       <div class="container text-center">
         <h2 class="fw-bold">I nostri servizi</h2>
         <p>Tre aree di lavoro, una sola attenzione alla qualità.</p>
-        <div class="row gy-2 gx-md-3">
+        <div class="row gy-2 gx-md-3" id="card-container">
 
           <div class="col-md-4">
-            <div class="card text-center h-100">
+            <div class="card text-center h-100" data-bs-target="#works-modal" data-bs-toggle="modal" data-category="residential">
               <span class="fs-1 mt-4" aria-hidden="true">&#x1F3E1;</span>
               <div class="card-body">
                 <h3 class="card-title fw-bold">Progettazione residenziale</h3>
@@ -65,7 +65,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card text-center h-100">
+            <div class="card text-center h-100" data-bs-target="#works-modal" data-bs-toggle="modal" data-category="interior">
               <span class="fs-1 mt-4" aria-hidden="true">&#x1FA91;</span>
               <div class="card-body">
                 <h3 class="card-title fw-bold">Interior Design</h3>
@@ -77,7 +77,7 @@
           </div>
 
           <div class="col-md-4">
-            <div class="card text-center h-100">
+            <div class="card text-center h-100" data-bs-target="#works-modal" data-bs-toggle="modal" data-category="renovation" >
               <span class="fs-1 mt-4" aria-hidden="true">&#x1F9F1;</span>
               <div class="card-body">
                 <h3 class="card-title fw-bold">Ristrutturazioni</h3>
@@ -166,19 +166,19 @@
       </div>
     </div>
   </footer>
-  <div class="modal fade" id="works-modal" tabindex="-1" aria-labelledby="works-modal-Label" aria-hidden="true">
+  <div class="modal fade" id="works-modal" tabindex="-1" aria-labelledby="works-modal-label" aria-hidden="true">
 
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="modal-title fs-5" id="works-modal-Label">I nostri migliori lavori per la categoria</h2>
+          <h2 class="modal-title fs-5" id="works-modal-label">I nostri migliori lavori per la categoria</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="works-modal-body">
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Chiudi">Chiudi</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
           
         </div>
       </div>

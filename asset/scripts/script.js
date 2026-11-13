@@ -3,6 +3,7 @@ const headerHeight = document.querySelector('header').offsetHeight;
 const HEADER = document.querySelector('header');
 const NAV_LINK = document.querySelectorAll('.nav-link');
 const NAV_BAR = document.querySelector('.navbar-nav');
+const CARD_CONTAINER = document.querySelector('#card-container');
 
 
 const WORKS = [
@@ -111,7 +112,7 @@ const WORKS = [
   {
     title: 'Palazzo Liberty',
     year: 2022,
-    rating: 10,
+    rating: 9,
     description: 'Restauro della facciata e degli interni di un palazzo d’inizio Novecento.',
     img: 'https://images.unsplash.com/photo-1650018984119-8a3fa781fa19?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
     id: 11,
@@ -148,6 +149,16 @@ const WORKS = [
     category: 'renovation',
 
   },
+  {
+    title: 'Casa di Ringhiera',
+    year: 2020,
+    rating: 9,
+    description: 'Riqualificazione di un appartamento in una tipica casa di ringhiera milanese.',
+    img: 'https://images.unsplash.com/photo-1630699144867-37acec97df5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+    id: 15,
+    category: 'renovation',
+
+  },
 
 
 ];
@@ -159,7 +170,7 @@ window.addEventListener('scroll', (e) => {
   } else {
     HEADER.classList.remove('scroll')
   }
-})
+});
 
 // esercizi js
 
@@ -179,4 +190,27 @@ NAV_BAR.addEventListener('click', (e) => {
 
 
 
+});
+
+// funzione per trovare i migliori tre prodotti per categoria
+
+function getTopWorks(array, category) {
+  const arrayFiltered = array.filter((item) => item.category === category );
+  const arrayOrdered = arrayFiltered.sort((a, b) => a.rating - b.rating);
+  const topThreeArray = arrayOrdered.slice(0,3);
+  return topThreeArray
+}
+
+
+CARD_CONTAINER.addEventListener('click',(e)=>{
+  
+  const CATEGORY = e.target.closest('.card').dataset.category;
+  const TOP_THREE_FOR_CATEGORY=getTopWorks(WORKS,CATEGORY);
+  console.log(TOP_THREE_FOR_CATEGORY);
+  TOP_THREE_FOR_CATEGORY.forEach(item => {
+    
+  });
 })
+  
+
+
