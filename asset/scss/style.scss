@@ -6,7 +6,7 @@
 header {
   @extend %dark-surface;
 
-  &.scroll{
+  &.scroll {
     background-color: colors.$brand;
   }
 
@@ -48,39 +48,57 @@ header {
 
   @include mixin.lift-hover;
 
-  
-  
-    &:hover{
-      @extend %title-line;
-    
+
+
+  &:hover {
+    @extend %title-line;
+
   }
-  
+
 }
 
-#contatti{
+#contatti {
   background-color: colors.$grey-light;
 
-  button{
+  button {
     @extend %btn-tool;
   }
- 
+
 }
 
 
-footer{
+footer {
 
   @extend %dark-surface;
 
-  a{
+  a {
     color: colors.$brand;
 
-    &:hover{
+    &:hover {
       color: colors.$footer-link-hover;
     }
   }
 }
 
 
-.modal-content button{
-  @extend %btn-tool;
+.modal-content {
+
+  .modal-body {
+    div {
+      @include mixin.lift-hover;
+      @extend %card-shadow;
+      &:hover{
+        @extend %card-hover;
+      }
+    }
+
+  }
+
+
+
+
+
+  button {
+    @extend %btn-tool;
+  }
 }
