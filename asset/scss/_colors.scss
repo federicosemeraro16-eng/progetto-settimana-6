@@ -2,11 +2,13 @@ $brand: hsl(20, 30%, 35%);
 $brand-dark: hsl(20, 30%, 27%);
 $neutral-dark: hsl(20, 20%, 15%);
 $neutral-light: hsl(40, 30%, 90%);
+$grey-light:#F8F9FA;
 
 $btn-bg: $brand;
 $btn-bg-hover: $brand-dark;
 $hero-bg: $brand;
 $nav-bg: $neutral-dark;
-$footer-bg	: $neutral-dark;
+$form-gb:$grey-light;
+$footer-bg: $neutral-dark;
 $footer-link-hover: $neutral-light;
 $text-accent: $brand;
