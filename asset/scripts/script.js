@@ -8,7 +8,7 @@ window.addEventListener('scroll', (e) => {
   const changeHeaderBg = heroHeight;
   if (changeHeaderBg < scrollY) {
     HEADER.classList.add('scroll');
-  }else{
+  } else {
     HEADER.classList.remove('scroll')
   }
 })
@@ -18,10 +18,17 @@ window.addEventListener('scroll', (e) => {
 // Esercizio 1: Link attivo nella navbar
 // Quando clicchi un link della nav, quel link diventa active e gli altri no.
 
-NAV_BAR.addEventListener('click',(e)=> {
-  NAV_LINK.forEach((link)=> {
-    link.classList.remove('active');
-    if(e.target===link){link.classList.add('active');}
-  })
+NAV_BAR.addEventListener('click', (e) => {
+
+  if (!e.target.classList.contains('nav-link')) {
+    return
+  } else {
+    NAV_LINK.forEach((link) => {
+      link.classList.remove('active');
+      if (e.target === link) { link.classList.add('active'); }
+
+    })
+  }
+
 
 })
