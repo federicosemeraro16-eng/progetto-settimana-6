@@ -205,12 +205,21 @@ function getTopWorks(array, category) {
 CARD_CONTAINER.addEventListener('click',(e)=>{
   
   const CATEGORY = e.target.closest('.card').dataset.category;
-  const TOP_THREE_FOR_CATEGORY=getTopWorks(WORKS,CATEGORY);
+  const CARD_CLICKED = e.target.closest('.card');
+  const MODAL_TITLE_CATEGORY = CARD_CLICKED.querySelector('.card-title').textContent;
+  const MODAL_H2= document.querySelector('#works-modal-label');
+  MODAL_H2.textContent = `I nostri 3 migliori lavori di ${MODAL_TITLE_CATEGORY}`;
+  const TOP_THREE_FOR_CATEGORY = getTopWorks(WORKS,`${CATEGORY}`);  
   console.log(TOP_THREE_FOR_CATEGORY);
-  TOP_THREE_FOR_CATEGORY.forEach(item => {
-    
-  });
+   
+  
 })
   
 
+function renderBestThree(array){
+ 
+  
+  array.forEach((item)=>{
 
+  })
+}
