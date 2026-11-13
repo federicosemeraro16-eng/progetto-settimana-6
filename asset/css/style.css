@@ -51,6 +51,7 @@ header .nav-link:hover {
   max-width: 34ch;
 }
 .card {
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .card:hover {

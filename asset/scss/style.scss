@@ -42,6 +42,7 @@ header {
 
 .card {
   @extend %card-shadow;
+  cursor: pointer;
 
   @extend %card-hover;
 
