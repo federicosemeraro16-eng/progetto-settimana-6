@@ -1,0 +1,50 @@
+@use 'colors' as colors;
+@use 'shadows' as shadows;
+
+%dark-surface {
+  background-color: colors.$neutral-dark;
+  color: colors.$neutral-light;
+}
+
+%btn-tool {
+  background-color: colors.$btn-bg;
+  color: colors.$neutral-light;
+  border: 1px solid colors.$btn-bg;
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    background-color: colors.$btn-bg-hover;
+    color: colors.$neutral-light;
+    border-color: colors.$btn-bg-hover;
+  }
+}
+
+%title-line {
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin: 0.5rem auto 0;
+    background-color: colors.$text-accent;
+  }
+}
+
+%card-shadow {
+  box-shadow: shadows.$card-shadow;
+}
+
+%card-hover {
+  &:hover {
+    box-shadow: shadows.$card-shadow-hover;
+  }
+}
+
+@mixin lift-hover($height: 6px) {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-$height);
+  }
+}
