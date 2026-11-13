@@ -6,6 +6,10 @@
 header {
   @extend %dark-surface;
 
+  &.scroll{
+    background-color: colors.$brand;
+  }
+
 
 
   .nav-link {
