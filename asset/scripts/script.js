@@ -218,7 +218,7 @@ CARD_CONTAINER.addEventListener('click', (e) => {
 function renderBestThree(array) {
   array.forEach((item) => {
     const NEW_ROW = document.createElement('div');
-    NEW_ROW.classList.add('align-items-center', 'mb-3');
+    NEW_ROW.classList.add('align-items-center', 'mb-3','work-item');
     const NEW_COL = document.createElement('div');
     NEW_COL.classList.add('col-12');
     const NEW_IMG = document.createElement('img');

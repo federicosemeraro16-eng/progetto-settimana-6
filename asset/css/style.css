@@ -14,7 +14,7 @@ header, footer {
   border-color: hsl(20, 30%, 27%);
 }
 
-.card:hover::after {
+.card:hover::after, .modal-content .work-item:hover::after {
   content: "";
   display: block;
   width: 60px;
@@ -23,11 +23,11 @@ header, footer {
   background-color: hsl(20, 30%, 35%);
 }
 
-.card, .modal-content .modal-body div {
+.card, .modal-content .work-item {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-.card:hover, .modal-content .modal-body div:hover {
+.card:hover, .modal-content .work-item:hover {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
@@ -67,10 +67,10 @@ footer a:hover {
   color: hsl(40, 30%, 90%);
 }
 
-.modal-content .modal-body div {
+.modal-content .work-item:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.modal-content .modal-body div:hover {
+.modal-content .work-item:hover:hover {
   transform: translateY(-6px);
 }
 

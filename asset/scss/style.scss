@@ -82,23 +82,17 @@ footer {
 
 
 .modal-content {
-
-  .modal-body {
-    div {
-      @include mixin.lift-hover;
-      @extend %card-shadow;
-      &:hover{
-        @extend %card-hover;
-      }
-    }
-
-  }
-
-
-
-
-
   button {
     @extend %btn-tool;
   }
+  .work-item {
+    @extend %card-shadow;
+    &:hover{
+      @extend %card-hover;
+      @include mixin.lift-hover;
+      @extend %title-line;
+    }
+  }
+
+   
 }
