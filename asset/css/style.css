@@ -1,3 +1,66 @@
+header, footer {
+  background-color: hsl(20, 20%, 15%);
+  color: hsl(40, 30%, 90%);
+}
 
+.hero div a, #contatti button {
+  background-color: hsl(20, 30%, 35%);
+  color: hsl(40, 30%, 90%);
+  border: 1px solid hsl(20, 30%, 35%);
+}
+.hero div a:hover, #contatti button:hover, .hero div a:active, #contatti button:active, .hero div a:focus-visible, #contatti button:focus-visible {
+  background-color: hsl(20, 30%, 27%);
+  color: hsl(40, 30%, 90%);
+  border-color: hsl(20, 30%, 27%);
+}
+
+.card:hover::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  margin: 0.5rem auto 0;
+  background-color: hsl(20, 30%, 35%);
+}
+
+.card {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+header .nav-link {
+  color: hsl(20, 30%, 35%);
+}
+header .nav-link:hover {
+  color: hsl(40, 30%, 90%);
+}
+
+.hero {
+  background-color: hsl(20, 30%, 35%);
+}
+.hero div {
+  min-height: 80dvh;
+}
+.hero div p {
+  max-width: 34ch;
+}
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+}
+#contatti {
+  background-color: #F8F9FA;
+}
+footer a {
+  color: hsl(20, 30%, 35%);
+}
+footer a:hover {
+  color: hsl(40, 30%, 90%);
+}
 
 /*# sourceMappingURL=style.css.map */

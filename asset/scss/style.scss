@@ -1,7 +1,76 @@
-// Atelier — Week Project Settimana VI
-//
-// Aggiungi qui il codice JavaScript se serve.
-// Per la Versione Base spesso non serve niente: tutto si fa in HTML+SCSS.
-// Per le versioni Intermedia e Avanzata: filtri lavori, toggle tema, validazione form.
 @use 'colors' as colors;
 @use 'shadows' as shadows;
+@use 'mixin' as mixin;
+
+
+header {
+  @extend %dark-surface;
+
+
+
+  .nav-link {
+    color: colors.$brand;
+
+
+    &:hover {
+      color: colors.$footer-link-hover;
+    }
+  }
+}
+
+.hero {
+
+  background-color: colors.$hero-bg;
+
+  div {
+    min-height: 80dvh;
+
+    p {
+      max-width: 34ch;
+    }
+
+    a {
+      @extend %btn-tool;
+    }
+  }
+
+}
+
+.card {
+  @extend %card-shadow;
+
+  @extend %card-hover;
+
+  @include mixin.lift-hover;
+
+  
+  
+    &:hover{
+      @extend %title-line;
+    
+  }
+  
+}
+
+#contatti{
+  background-color: colors.$grey-light;
+
+  button{
+    @extend %btn-tool;
+  }
+ 
+}
+
+
+footer{
+
+  @extend %dark-surface;
+
+  a{
+    color: colors.$brand;
+
+    &:hover{
+      color: colors.$footer-link-hover;
+    }
+  }
+}
