@@ -34,7 +34,7 @@ const WORKS = [
     description: 'Attico con terrazza panoramica sui Navigli di Milano.',
     img: 'https://images.unsplash.com/photo-1763419162043-53b01122f20b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
     id: 3,
-    categoria: 'residential',
+    category: 'residential',
 
   },
   {
@@ -196,13 +196,14 @@ NAV_BAR.addEventListener('click', (e) => {
 
 function getTopWorks(array, category) {
   const arrayFiltered = array.filter((item) => item.category === category);
-  const arrayOrdered = arrayFiltered.sort((a, b) => a.rating - b.rating);
+  const arrayOrdered = arrayFiltered.sort((a, b) => b.rating - a.rating);
   const topThreeArray = arrayOrdered.slice(0, 3);
   return topThreeArray
 }
 
 
 CARD_CONTAINER.addEventListener('click', (e) => {
+  WORK_MODAL_BODY.innerHTML='';
 
   const CATEGORY = e.target.closest('.card').dataset.category;
   const CARD_CLICKED = e.target.closest('.card');
@@ -234,9 +235,9 @@ function renderBestThree(array) {
     YEAR_FIELD.textContent = `Lavoro effettuato nell'anno ${item.year}`;
     const DESCRIPTION_FIELD = document.createElement('p');
     DESCRIPTION_FIELD.textContent = `Dettaglio lavoro effettuato: ${item.description}`;
-    COL_DIV_TEXT.appendChild(DESCRIPTION_FIELD);
-    COL_DIV_TEXT.appendChild(YEAR_FIELD);
     COL_DIV_TEXT.appendChild(NEW_PAR);
+    COL_DIV_TEXT.appendChild(YEAR_FIELD);
+    COL_DIV_TEXT.appendChild(DESCRIPTION_FIELD);
     NEW_COL.appendChild(NEW_IMG);
     NEW_ROW.appendChild(NEW_COL);
     NEW_ROW.appendChild(COL_DIV_TEXT);
