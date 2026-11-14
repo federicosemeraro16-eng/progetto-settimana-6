@@ -5,6 +5,16 @@ const NAV_LINK = document.querySelectorAll('.nav-link');
 const NAV_BAR = document.querySelector('.navbar-nav');
 const CARD_CONTAINER = document.querySelector('#card-container');
 const WORK_MODAL_BODY = document.querySelector('#works-modal-body');
+const EMAIL_REGEX =/^[a-zA-Z0-9%_.+-]+\@[a-z]+\.[a-z]{2,}$/;
+const INPUT_NAME = document.querySelector('#name-input');
+const INPUT_EMAIL = document.querySelector('#input-email');
+const SERVICE_SELECTED = document.querySelector('#select-service');
+const MESSAGE_TEXT = document.querySelector('#message-field');
+const MY_FORM = document.querySelector('#myForm');
+
+console.log(document.querySelector('#error-msg-option').textContent)
+
+
 
 const WORKS = [
   {
@@ -219,7 +229,7 @@ CARD_CONTAINER.addEventListener('click', (e) => {
 function renderBestThree(array) {
   array.forEach((item) => {
     const NEW_ROW = document.createElement('div');
-    NEW_ROW.classList.add('align-items-center', 'mb-3','work-item');
+    NEW_ROW.classList.add('align-items-center', 'mb-3','work-item','row');
     const NEW_COL = document.createElement('div');
     NEW_COL.classList.add('col-12');
     const NEW_IMG = document.createElement('img');
@@ -244,3 +254,33 @@ function renderBestThree(array) {
     WORK_MODAL_BODY.appendChild(NEW_ROW);
   })
 }
+
+// funzione di validazione del form per i dati minimi richiesti 
+
+function validationForm(nome,email,opzione){
+  const ERROR_MESSAGE_NAME = document.querySelector('#error-msg-name');
+  const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
+  const ERROR_MESSAGE_SELECTED = document.querySelector('#error-msg-option');
+  if(!nome.value){
+    ERROR_MESSAGE_NAME.textContent = `Si prega di inserire il nome`;
+
+  }
+  if(!EMAIL_REGEX.test(email.value)){
+    ERROR_MESSAGE_EMAIL.textContent =`Si prega di inserire un formato coerente`
+  }
+
+  if(opzione.value!==''){
+    ERROR_MESSAGE_SELECTED.textContent=`Si prega di scegliere un opzione`;
+
+  }
+}
+
+
+//listener del form
+
+MY_FORM.addEventListener('submit',(e)=>{
+  
+  e.preventDefault();
+  console.log('form inviato');
+  validationForm(INPUT_NAME,INPUT_EMAIL,SERVICE_SELECTED);
+})
