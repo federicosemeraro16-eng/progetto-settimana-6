@@ -11,8 +11,11 @@ const INPUT_EMAIL = document.querySelector('#input-email');
 const SERVICE_SELECTED = document.querySelector('#select-service');
 const MESSAGE_TEXT = document.querySelector('#message-field');
 const MY_FORM = document.querySelector('#myForm');
+const ERROR_MESSAGE_NAME = document.querySelector('#error-msg-name');
+const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
 
-console.log(document.querySelector('#error-msg-option').textContent)
+
+
 
 
 
@@ -257,9 +260,11 @@ function renderBestThree(array) {
 
 // funzione di validazione del form per i dati minimi richiesti 
 
-function validationForm(name, email, option) {
-  if (!name.value || !EMAIL_REGEX.test(email.value) || option.value !== '') {
+function validationForm(name, email) {
+  if (!name.value || !EMAIL_REGEX.test(email.value)) {
     return false
+  } else {
+    return true
   }
 }
 
@@ -270,13 +275,11 @@ MY_FORM.addEventListener('submit', (e) => {
 
   e.preventDefault();
 
-  if (!validationForm(INPUT_NAME, INPUT_EMAIL, SERVICE_SELECTED)) {
-    const ERROR_MESSAGE_NAME = document.querySelector('#error-msg-name');
-    const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
-    const ERROR_MESSAGE_SELECTED = document.querySelector('#error-msg-option');
-    ERROR_MESSAGE_NAME.textContent='';
-    ERROR_MESSAGE_EMAIL.textContent='';
-    ERROR_MESSAGE_SELECTED.textContent='';
+  if (!validationForm(INPUT_NAME, INPUT_EMAIL)) {
+
+    ERROR_MESSAGE_NAME.textContent = '';
+    ERROR_MESSAGE_EMAIL.textContent = '';
+
 
     if (!INPUT_NAME.value) {
       ERROR_MESSAGE_NAME.textContent = `Si prega di inserire il nome`;
@@ -286,11 +289,17 @@ MY_FORM.addEventListener('submit', (e) => {
       ERROR_MESSAGE_EMAIL.textContent = `Si prega di inserire un formato coerente`
     }
 
-    if (SERVICE_SELECTED.value !== '') {
-      ERROR_MESSAGE_SELECTED.textContent = `Si prega di scegliere un opzione`;
 
-    }
+    
+  } else {
+    //  else con lo show della modale di conferma da implementare con conferma di invio del form
+    ERROR_MESSAGE_NAME.textContent = '';
+    ERROR_MESSAGE_EMAIL.textContent = '';
+    MY_FORM.reset();
   };
-  MY_FORM.reset();
+
+
 
 })
+
+
