@@ -44,3 +44,8 @@ Extra applicati:
 - Applicazione del colore dinamico della nav allo scroll al termine della hero section;
 - Creazione di base dati per i lavori effettuati dall'agenzia;
 - Creazione di modale scrollabile con i top 3 lavori effettuati dall'agenzia;
+- creazione di modale di conferma di invio del form (dopo scadenza);
+- creazione di regex per validazione email(dopo scadenza);
+- creazione di messaggi di errore se i campi non sono compilati(dopo scadenza);
+- creazione di array requests che pusha all'invio del form la richiesta nell'array come oggetto(dopo scadenza);
+- Inserimento local-storage (dopo la scadenza)

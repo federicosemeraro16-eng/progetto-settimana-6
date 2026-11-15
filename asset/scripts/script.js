@@ -16,8 +16,13 @@ const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
 const BODY = document.querySelector('body');
 
 
+const REQUEST_RECEIVED = JSON.parse(localStorage.getItem('Requests-Received'));
 
-const REQUESTS = [];
+let REQUESTS=[];
+
+if(REQUEST_RECEIVED){
+  REQUESTS=REQUEST_RECEIVED
+}
 
 
 const WORKS = [
@@ -303,6 +308,7 @@ MY_FORM.addEventListener('submit', (e) => {
     const MESSAGE_VALUE = MESSAGE_FIELD.value;
 
     REQUESTS.push({ name: USER_NAME, email: USER_MAIL, request: SERVICE_SELECTED, message: MESSAGE_VALUE });
+    localStorage.setItem('Requests-Received', JSON.stringify(REQUESTS));
     MY_FORM.reset();
 
     modalConfirmation(USER_NAME)
@@ -317,7 +323,7 @@ MY_FORM.addEventListener('submit', (e) => {
 
 function modalConfirmation(nome) {
   const MODAL_EXISTING = document.querySelector('#modal-request-confirmation');
-  if (MODAL_EXISTING){
+  if (MODAL_EXISTING) {
     MODAL_EXISTING.remove()
   }
   const DIV_MODAL_FADE = document.createElement('div');
