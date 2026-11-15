@@ -8,8 +8,8 @@ const WORK_MODAL_BODY = document.querySelector('#works-modal-body');
 const EMAIL_REGEX = /^[a-zA-Z0-9%_.+-]+\@[a-z]+\.[a-z]{2,}$/;
 const INPUT_NAME = document.querySelector('#name-input');
 const INPUT_EMAIL = document.querySelector('#input-email');
-const SERVICE_SELECTED = document.querySelector('#select-service');
-const MESSAGE_TEXT = document.querySelector('#message-field');
+const SERVICE = document.querySelector('#select-service');
+const MESSAGE_FIELD = document.querySelector('#message-field');
 const MY_FORM = document.querySelector('#myForm');
 const ERROR_MESSAGE_NAME = document.querySelector('#error-msg-name');
 const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
@@ -17,7 +17,7 @@ const BODY = document.querySelector('body');
 
 
 
-
+const REQUESTS = [];
 
 
 const WORKS = [
@@ -262,7 +262,7 @@ function renderBestThree(array) {
 // funzione di validazione del form per i dati minimi richiesti 
 
 function validationForm(name, email) {
-  if (!name.value || !EMAIL_REGEX.test(email.value)) {
+  if (!name.value.trim() || !EMAIL_REGEX.test(email.value)) {
     return false
   } else {
     return true
@@ -276,13 +276,15 @@ MY_FORM.addEventListener('submit', (e) => {
 
   e.preventDefault();
 
+  ERROR_MESSAGE_NAME.textContent = '';
+  ERROR_MESSAGE_EMAIL.textContent = '';
+
   if (!validationForm(INPUT_NAME, INPUT_EMAIL)) {
 
-    ERROR_MESSAGE_NAME.textContent = '';
-    ERROR_MESSAGE_EMAIL.textContent = '';
 
 
-    if (!INPUT_NAME.value) {
+
+    if (!INPUT_NAME.value.trim()) {
       ERROR_MESSAGE_NAME.textContent = `Si prega di inserire il nome`;
 
     }
@@ -293,15 +295,20 @@ MY_FORM.addEventListener('submit', (e) => {
 
 
   } else {
-    //  else con lo show della modale di conferma da implementare con conferma di invio del form
-    ERROR_MESSAGE_NAME.textContent = '';
-    ERROR_MESSAGE_EMAIL.textContent = '';
-    const USER_NAME= INPUT_NAME.value.trim();
+
+
+    const USER_NAME = INPUT_NAME.value.trim();
     const USER_MAIL = INPUT_EMAIL.value;
+    const SERVICE_SELECTED = SERVICE.value;
+    const MESSAGE_VALUE = MESSAGE_FIELD.value;
+
+    REQUESTS.push({ name: USER_NAME, email: USER_MAIL, request: SERVICE_SELECTED, message: MESSAGE_VALUE });
     MY_FORM.reset();
+
     modalConfirmation(USER_NAME)
   };
 
+  console.log(REQUESTS)
 
 
 })
@@ -309,6 +316,10 @@ MY_FORM.addEventListener('submit', (e) => {
 //funzione per la creazione della modale di conferma del form 
 
 function modalConfirmation(nome) {
+  const MODAL_EXISTING = document.querySelector('#modal-request-confirmation');
+  if (MODAL_EXISTING){
+    MODAL_EXISTING.remove()
+  }
   const DIV_MODAL_FADE = document.createElement('div');
   DIV_MODAL_FADE.classList.add('modal', 'fade');
   const MODAL_FADE_ATTRIBUTES = [{ name: 'id', value: 'modal-request-confirmation' }, { name: 'tabindex', value: '-1' }, { name: 'aria-labelledby', value: 'modal-request-confirmation-title' }, { name: 'aria-hidden', value: 'true' }];
@@ -334,7 +345,7 @@ function modalConfirmation(nome) {
 
   const MODAL_BODY = document.createElement('div');
   MODAL_BODY.setAttribute('id', 'work-confirmation-modal-body');
-  MODAL_BODY.classList.add('modal-body','text-center');
+  MODAL_BODY.classList.add('modal-body', 'text-center');
   const ICON_SUCCESS = document.createElement('i');
   ICON_SUCCESS.classList.add('bi', 'bi-check-circle-fill', 'fs-1', 'text-success');
   ICON_SUCCESS.setAttribute('aria-hidden', 'true');
