@@ -13,6 +13,7 @@ const MESSAGE_TEXT = document.querySelector('#message-field');
 const MY_FORM = document.querySelector('#myForm');
 const ERROR_MESSAGE_NAME = document.querySelector('#error-msg-name');
 const ERROR_MESSAGE_EMAIL = document.querySelector('#error-msg-email');
+const BODY = document.querySelector('body');
 
 
 
@@ -290,16 +291,61 @@ MY_FORM.addEventListener('submit', (e) => {
     }
 
 
-    
+
   } else {
     //  else con lo show della modale di conferma da implementare con conferma di invio del form
     ERROR_MESSAGE_NAME.textContent = '';
     ERROR_MESSAGE_EMAIL.textContent = '';
+    const USER_NAME= INPUT_NAME.value.trim();
+    const USER_MAIL = INPUT_EMAIL.value;
     MY_FORM.reset();
+    modalConfirmation(USER_NAME)
   };
 
 
 
 })
 
+//funzione per la creazione della modale di conferma del form 
+
+function modalConfirmation(nome) {
+  const DIV_MODAL_FADE = document.createElement('div');
+  DIV_MODAL_FADE.classList.add('modal', 'fade');
+  const MODAL_FADE_ATTRIBUTES = [{ name: 'id', value: 'modal-request-confirmation' }, { name: 'tabindex', value: '-1' }, { name: 'aria-labelledby', value: 'modal-request-confirmation-title' }, { name: 'aria-hidden', value: 'true' }];
+  MODAL_FADE_ATTRIBUTES.forEach((attribute) => {
+    DIV_MODAL_FADE.setAttribute(attribute.name, attribute.value);
+  });
+  const DIV_MODAL_DIALOG = document.createElement('div');
+  DIV_MODAL_DIALOG.classList.add('modal-dialog', 'modal-dialog-centered');
+  const DIV_MODAL_CONTENT = document.createElement('div');
+  DIV_MODAL_CONTENT.classList.add('modal-content');
+  const MODAL_CONFIRMATION_HEADER = document.createElement('div');
+  MODAL_CONFIRMATION_HEADER.classList.add('modal-header')
+  const MODAL_TITLE = document.createElement('h2');
+  MODAL_TITLE.classList.add('modal-title', 'fs-5');
+  MODAL_TITLE.textContent = `Grazie ${nome}, abbiamo ricevuto la tua richiesta`;
+  MODAL_TITLE.setAttribute('id', 'modal-request-confirmation-title');
+  const MODAL_CLOSURE_CONFIRMATION_BTN = document.createElement('button');
+  MODAL_CLOSURE_CONFIRMATION_BTN.classList.add('btn-close');
+  const MODAL_CLOSURE_CONFIRMATION_BTN_ATTRIBUTES = [{ name: 'type', value: 'button' }, { name: 'aria-label', value: 'Close' }, { name: 'data-bs-dismiss', value: 'modal' }];
+  MODAL_CLOSURE_CONFIRMATION_BTN_ATTRIBUTES.forEach((attribute) => {
+    MODAL_CLOSURE_CONFIRMATION_BTN.setAttribute(attribute.name, attribute.value)
+  });
+
+  const MODAL_BODY = document.createElement('div');
+  MODAL_BODY.setAttribute('id', 'work-confirmation-modal-body');
+  MODAL_BODY.classList.add('modal-body','text-center');
+  const ICON_SUCCESS = document.createElement('i');
+  ICON_SUCCESS.classList.add('bi', 'bi-check-circle-fill', 'fs-1', 'text-success');
+  ICON_SUCCESS.setAttribute('aria-hidden', 'true');
+  MODAL_BODY.appendChild(ICON_SUCCESS);
+  MODAL_CONFIRMATION_HEADER.appendChild(MODAL_TITLE);
+  MODAL_CONFIRMATION_HEADER.appendChild(MODAL_CLOSURE_CONFIRMATION_BTN);
+  DIV_MODAL_CONTENT.appendChild(MODAL_CONFIRMATION_HEADER);
+  DIV_MODAL_CONTENT.appendChild(MODAL_BODY);
+  DIV_MODAL_DIALOG.appendChild(DIV_MODAL_CONTENT);
+  DIV_MODAL_FADE.appendChild(DIV_MODAL_DIALOG);
+  BODY.appendChild(DIV_MODAL_FADE);
+  new bootstrap.Modal(DIV_MODAL_FADE).show();
+}
 
