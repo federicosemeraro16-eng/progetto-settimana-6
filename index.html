@@ -99,33 +99,34 @@
       <div class="container">
         <h2 class="text-center">Contattaci</h2>
         <p class="text-center">Compila il form, ti rispondiamo entro 48 ore.</p>
-        <form id="myForm">
+        <form id="myForm" novalidate>
           <div class="row justify-content-center">
             <div class="col-md-8 col-lg-6">
               <div class="mb-3">
                 <label for="name-input" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="name-input" name="name-input">
+                <input type="text" class="form-control" id="name-input" name="name-input" required>
                 <p class="text-danger" id="error-msg-name"></p>
               </div>
               <div class="mb-3">
                 <label for="input-email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="input-email" name="input-email">
+                <input type="email" class="form-control" id="input-email" name="input-email" required>
                 <p class="text-danger" id="error-msg-email"></p>
               </div>
               <div class="mb-3">
                 <label for="select-service" class="form-label">Tipo di progetto</label>
-                <select id="select-service" class="form-select" name="select-service">
+                <select id="select-service" class="form-select" name="select-service"
+                  title="Si consiglia l'inserimento di una scelta">
                   <option value="RSD">Residenziale</option>
                   <option value="IDE">Interior Design</option>
                   <option value="RES">Ristrutturazione</option>
                 </select>
-                <p class="text-danger" id="error-msg-option"></p>
+
               </div>
               <div class="mb-3">
                 <label for="message-field" class="form-label">Messaggio</label>
-                <textarea class="form-control" id="message-field" name="message-field" aria-describedby="message-field"
-                  rows="5"></textarea>
-                <p class="text-danger" id="error-msg-name"></p>
+                <textarea class="form-control" id="message-field" name="message-field" rows="5"
+                  title="Si consiglia l'inserimento di un messaggio di presentazione del progetto"></textarea>
+
               </div>
               <button type="submit" class="btn w-100">Invia</button>
             </div>
@@ -164,7 +165,7 @@
                 class="text-light text-decoration-none">info@atelier.example</a></li>
             <li><a href="tel:+39 02 0000 111" target="_blank" class="text-light text-decoration-none">+39 02 0000
                 111</a></li>
-
+          </ul>
         </div>
       </div>
       <div class="row">
